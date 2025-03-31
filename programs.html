@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upcoming Programs - Hare Krishna Temple</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Slider-specific styles */
+    .slider {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+    .slider-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slide {
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+    .slide img {
+      width: 100%;
+      display: block;
+    }
+    .slider-nav {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .slider-nav button {
+      background: #004080;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .slider-nav button:hover {
+      background: #0059b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Upcoming Programs</h1>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <!-- You can include additional nav items if needed -->
+  </nav>
+  <div class="container">
+    <div class="slider" id="slider">
+      <div class="slider-container" id="slider-container">
+        <div class="slide"><img src="https://example.com/image1.jpg" alt="Program 1"></div>
+        <div class="slide"><img src="https://example.com/image2.jpg" alt="Program 2"></div>
+        <div class="slide"><img src="https://example.com/image3.jpg" alt="Program 3"></div>
+      </div>
+    </div>
+    <div class="slider-nav">
+      <button onclick="prevSlide()">Previous</button>
+      <button onclick="nextSlide()">Next</button>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2025 Hare Krishna Temple. All rights reserved.</p>
+  </footer>
+  <script>
+    // Slider functionality
+    let slideIndex = 0;
+    const sliderContainer = document.getElementById('slider-container');
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      if (index >= slides.length) { slideIndex = 0; }
+      if (index < 0) { slideIndex = slides.length - 1; }
+      sliderContainer.style.transform = 'translateX(' + (-slideIndex * 100) + '%)';
+    }
+
+    function nextSlide() {
+      slideIndex++;
+      if (slideIndex >= slides.length) { slideIndex = 0; }
+      showSlide(slideIndex);
+    }
+
+    function prevSlide() {
+      slideIndex--;
+      if (slideIndex < 0) { slideIndex = slides.length - 1; }
+      showSlide(slideIndex);
+    }
+  </script>
+</body>
+</html>
